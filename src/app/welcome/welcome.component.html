@@ -1,0 +1,42 @@
+<section>
+  <form fxLayout="column" fxLayoutAlign="center center" #frm="ngForm">
+    <mat-form-field>
+      <input type="text"
+             matInput
+             placeholder="Enter the name of the city"
+             ngModel
+             name="city"
+             required/>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text"
+             maxlength="5"
+             matInput
+             placeholder="must be filled with the city acronym"
+             ngModel
+             name="code"/>
+    </mat-form-field>
+    <button type="submit"
+            mat-raised-button
+            (click)="onSubmit(frm); frm.reset()"
+            color="primary" [disabled]="frm.invalid">Submit</button>
+  </form>
+</section>
+
+<section>
+  <mat-list *ngFor="let item of weatherItem">
+      <mat-card fxLayout="column">
+        <mat-card-header>
+          <div mat-card-avatar></div>
+          <mat-card-title>{{ item.city }}</mat-card-title>
+          <mat-card-subtitle>{{ item.description }} - {{ item.weather }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Temp: {{ item.temp }}°</p>
+          <p>Humidity: {{ item.humidity }}</p>
+          <p>Sunrise: {{ item.sunrise*1000 | date: 'medium' }}</p>
+          <p>Sunset: {{ item.sunset*1000 | date: 'medium' }}</p>
+        </mat-card-content>
+      </mat-card>
+  </mat-list>
+</section>
