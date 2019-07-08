@@ -6,5 +6,4 @@ export class WeatherModel {
   temp: number;
   sunrise: number;
   sunset: number;
-  code: boolean;
 }
